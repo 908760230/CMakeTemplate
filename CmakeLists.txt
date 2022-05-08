@@ -1,0 +1,62 @@
+#设置Cmake最低版本
+cmake_minimum_required(VERSION 3.22.1)
+
+project(
+    CmakeTemplate
+    VERSION 0.0.1
+    DESCRIPTION "Cmake样例"
+    HOMEPAGE_URL "www.baidu.com"
+    LANGUAGES CXX C)
+
+#打印系统信息
+message(STATUS "system info: " ${CMAKE_SYSTEM})    
+
+# 语言标准为c++17
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED true)
+message(STATUS "Cpp language standard: " ${CMAKE_CXX_STANDARD})
+
+#建议关闭，能有效避免编译期间某些编译选项或预编译文件造成的冲突(例如 -Wpedantic)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+#设置编译选项
+set(CMAKE_BUILD_TYPE "Debug")
+set(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb")
+set(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
+
+# 不开启无法使用FOLDER
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+
+#设置链接库目录
+set(PROJECT_LIBS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/bin/libs)
+set(PROJECT_OUTPUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+
+message(STATUS "PROJECT_LIBS_DIR: " ${PROJECT_LIBS_DIR})
+message(STATUS "PROJECT_OUTPUT_DIR: " ${PROJECT_OUTPUT_DIR})
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/modules/log)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/modules/math)
+add_subdirectory(modules)
+add_subdirectory(src)
+
+link_directories(${PROJECT_LIBS_DIR})
+
+#构建一个CPack安装包
+include(InstallRequiredSystemLibraries)
+
+if(WIN32)
+    set(CPACK_GENERATOR WIX)
+endif()
+
+set(CPACK_PACKAGE_NAME "${CMAKE_PROJECT_NAME}")
+set(CPACK_PACKAGE_VENDOR "CMake.org")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "CPack Component Installation Example")
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/License.txt")
+set(CPACK_PACKAGE_VERSION "${CMAKE_PROJECT_VERSION}")
+set(CPACK_PACKAGE_VERSION_MAJOR "${CMAKE_PROJECT_VERSION_MAJOR}")
+set(CPACK_PACKAGE_VERSION_MINOR "${CMAKE_PROJECT_VERSION_MINOR}")
+set(CPACK_PACKAGE_VERSION_PATCH "${CMAKE_PROJECT_VERSION_PATCH}")
+include(CPack)
+
+# 打包程序指令
+# cpack -C CPackConfig.cmake
