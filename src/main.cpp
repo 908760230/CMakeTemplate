@@ -12,5 +12,7 @@ int main()
     Vec2 vec(2, 3);
     cout << vec;
     char s = getchar();
+
+    int help = 11;
     return 0;
 }
