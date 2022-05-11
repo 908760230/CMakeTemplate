@@ -14,7 +14,6 @@ bin/libs - 保存编译完成后的链接库文件
 
 - [X] CppCheck
 - [ ] Canon
-- [ ] docker
 - [ ] vld
 - [ ] valgrind
 - [X] CPack
