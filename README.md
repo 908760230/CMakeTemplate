@@ -7,6 +7,7 @@ bin/libs - 保存编译完成后的链接库文件
 
 ## 一、依赖库
 + CppCheck
++ llvm
 
 ## 二、功能
 目前支持的模块如下：
@@ -18,3 +19,4 @@ bin/libs - 保存编译完成后的链接库文件
 - [ ] valgrind
 - [X] CPack
 - [ ] UnitTest
+- [x] clang-format
