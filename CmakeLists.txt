@@ -8,6 +8,9 @@ project(
     HOMEPAGE_URL "www.baidu.com"
     LANGUAGES CXX C)
 
+# 开启CTest
+enable_testing()
+
 #打印系统信息
 message(STATUS "system info: " ${CMAKE_SYSTEM})    
 
@@ -28,18 +31,24 @@ set(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 #设置链接库目录
-set(PROJECT_LIBS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/bin/libs)
-set(PROJECT_OUTPUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+set(PROJECT_LIBS_DIR ${CMAKE_BINARY_DIR}/lib)
+set(PROJECT_OUTPUT_DIR ${CMAKE_BINARY_DIR}/bin)
 
 message(STATUS "PROJECT_LIBS_DIR: " ${PROJECT_LIBS_DIR})
 message(STATUS "PROJECT_OUTPUT_DIR: " ${PROJECT_OUTPUT_DIR})
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/modules/log)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/modules/math)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/test/testInt)
 add_subdirectory(modules)
 add_subdirectory(src)
+add_subdirectory(ThirdParty)
+add_subdirectory(test)
 
 link_directories(${PROJECT_LIBS_DIR})
+
+
+
 
 #构建一个CPack安装包
 include(InstallRequiredSystemLibraries)

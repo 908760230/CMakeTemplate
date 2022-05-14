@@ -18,7 +18,7 @@ public:
     // dsad
     int v = 1;
 
-    char  c  = 12;
+    char  cc = 12;
     int   ds = 1;
     float pp = .1f;
 };

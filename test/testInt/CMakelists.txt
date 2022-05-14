@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.5)
+
+
+project(testInt)
+
+add_executable(testInt main.cpp)
+
+# 链接gtest库和我们的mycode库
+target_link_libraries(testInt PUBLIC
+    gtest_main
+)
+
+add_test(
+    NAME testInt
+    COMMAND testInt
+)
+
+set_tests_properties(testInt PROPERTIES PASS_REGULAR_EXPRESSION "1")
