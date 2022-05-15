@@ -24,8 +24,11 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 #设置编译选项
 set(CMAKE_BUILD_TYPE "Debug")
-set(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb")
-set(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
+
+if(unix)
+    set(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb")
+    set(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
+endif()
 
 # 不开启无法使用FOLDER
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
@@ -89,7 +92,8 @@ if(CMAKE_CXX_CPPCHECK)
       # Append desired arguments to CppCheck
       list(
         APPEND CMAKE_CXX_CPPCHECK
-          
+          "-iThirdParty"  
+
           # Using the below template will allow jumping to any found error from inside Visual Studio output window by double click
           "--template \"${CMAKE_SOURCE_DIR}/{file}({line}): {severity} ({id}): {message}\"" 
           
