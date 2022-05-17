@@ -44,7 +44,6 @@ cmake --build build
 
 - [X] CppCheck
 - [X] vld
-- [ ] valgrind
 - [X] CPack
 - [X] gTest
 - [x] clang-format
