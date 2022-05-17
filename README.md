@@ -1,6 +1,8 @@
 # CMakeTemplate
 
-[TOC]
+<!-- toc -->
+dsad 
+<!-- /toc -->
 
 目录机构:
 
@@ -33,8 +35,7 @@ ${CMAKE_BINARY_DIR}/lib - 保存编译完成后的链接库文件
 目前支持的模块如下：
 
 - [X] CppCheck
-- [ ] ninjia
-- [ ] vld
+- [X] vld
 - [ ] valgrind
 - [X] CPack
 - [X] gTest
@@ -62,4 +63,9 @@ ctest -C debug
 ## 五、CppCheck
 <div align=center>
 <img src="doc/img/CppCheck.png">
+</div>
+
+## 五、vld内存泄漏检测
+<div align=center>
+<img src="doc/img/vld.gif">
 </div>

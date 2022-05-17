@@ -40,18 +40,16 @@ set(PROJECT_OUTPUT_DIR ${CMAKE_BINARY_DIR}/bin)
 message(STATUS "PROJECT_LIBS_DIR: " ${PROJECT_LIBS_DIR})
 message(STATUS "PROJECT_OUTPUT_DIR: " ${PROJECT_OUTPUT_DIR})
 
+link_directories(${PROJECT_LIBS_DIR})
+
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/modules/log)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/modules/math)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/test/testInt)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty/vld/include)
+
 add_subdirectory(modules)
 add_subdirectory(src)
 add_subdirectory(ThirdParty)
 add_subdirectory(test)
-
-link_directories(${PROJECT_LIBS_DIR})
-
-
-
 
 #构建一个CPack安装包
 include(InstallRequiredSystemLibraries)

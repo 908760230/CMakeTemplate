@@ -1,0 +1,15 @@
+project(testVld)
+
+add_executable(testVld main.cpp)
+
+target_link_libraries(testVld vld)
+
+set_target_properties( testVld PROPERTIES OUTPUT_NAME_DEBUG "testVld")
+set_target_properties( testVld PROPERTIES PREFIX "")
+set_target_properties( testVld PROPERTIES FOLDER "test"
+	ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_OUTPUT_DIR}
+	RUNTIME_OUTPUT_DIRECTORY ${PROJECT_OUTPUT_DIR}
+	LIBRARY_OUTPUT_DIRECTORY ${PROJECT_OUTPUT_DIR})
+
+
+

@@ -1,14 +1,18 @@
-cmake_minimum_required(VERSION 3.5)
-
-
 project(testInt)
 
 add_executable(testInt main.cpp)
 
-# 链接gtest库和我们的mycode库
 target_link_libraries(testInt PUBLIC
     gtest_main
 )
+
+set_target_properties( testInt PROPERTIES OUTPUT_NAME_DEBUG "testInt")
+set_target_properties( testInt PROPERTIES PREFIX "")
+set_target_properties( testInt PROPERTIES FOLDER "test"
+	ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_OUTPUT_DIR}
+	RUNTIME_OUTPUT_DIRECTORY ${PROJECT_OUTPUT_DIR}
+	LIBRARY_OUTPUT_DIRECTORY ${PROJECT_OUTPUT_DIR})
+
 
 add_test(
     NAME testInt
