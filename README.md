@@ -27,8 +27,19 @@ ${CMAKE_BINARY_DIR}/lib - 保存编译完成后的链接库文件
 ## 一、依赖库
 + [CppCheck](http://cppcheck.net)
 + [llvm](https://llvm.org/)
++ [CMake 3.22.1](https://cmake.org/)
++ [vs2022](https://visualstudio.microsoft.com/zh-hans/vs/)
 
-## 二、功能
+## 二、编译步骤
+```bash
+mkdir build
+cd build
+cmake ..
+cd ..
+cmake --build build
+```
+
+## 三、功能
 目前支持的模块如下：
 
 - [X] CppCheck
@@ -38,7 +49,7 @@ ${CMAKE_BINARY_DIR}/lib - 保存编译完成后的链接库文件
 - [X] gTest
 - [x] clang-format
 
-## 三、执行CTest
+## 四、执行CTest
 + 运行CTest的指令
 ```bash
 ctest -C debug
@@ -52,17 +63,17 @@ ctest -C debug
 <img src="doc/img/CTest.gif">
 </div>
 
-## 四、clang-format 代码格式化
+## 五、clang-format 代码格式化
 <div align=center>
 <img src="doc/img/format.gif">
 </div>
 
-## 五、CppCheck
+## 六、CppCheck
 <div align=center>
 <img src="doc/img/CppCheck.png">
 </div>
 
-## 五、vld内存泄漏检测
+## 七、vld内存泄漏检测
 <div align=center>
 <img src="doc/img/vld.gif">
 </div>
